@@ -1,0 +1,141 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# NOYES TEAM!"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#import numpy and data science package\n",
+    "import matplotlib\n",
+    "matplotlib.use('Agg')\n",
+    "from datascience import Table\n",
+    "%matplotlib inline\n",
+    "import matplotlib.pyplot as plt\n",
+    "import numpy as np\n",
+    "plt.style.use('fivethirtyeight')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#intro?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "    <thead>\n",
+       "        <tr>\n",
+       "            <th>Date</th> <th>Prison Pos. Cases</th> <th>Total Cases (from total population of NY)</th> <th>Prison Pos. % Change</th> <th>Total Pos. Cases % Change</th> <th>Prison daily</th> <th>Total NY daily</th> <th>Prison Rate of Inf.</th> <th>NY Rate of Inf.</th> <th>Difference of Rates of Infection</th>\n",
+       "        </tr>\n",
+       "    </thead>\n",
+       "    <tbody>\n",
+       "        <tr>\n",
+       "            <td>19-Apr</td> <td>211              </td> <td>247815                                   </td> <td>nan                 </td> <td>nan                      </td> <td>nan         </td> <td>nan           </td> <td>nan                </td> <td>nan            </td> <td>nan                             </td>\n",
+       "        </tr>\n",
+       "        <tr>\n",
+       "            <td>20-Apr</td> <td>219              </td> <td>253060                                   </td> <td>3.79%               </td> <td>2.12%                    </td> <td>8           </td> <td>5245          </td> <td>nan                </td> <td>nan            </td> <td>nan                             </td>\n",
+       "        </tr>\n",
+       "        <tr>\n",
+       "            <td>21-Apr</td> <td>239              </td> <td>258361                                   </td> <td>9.13%               </td> <td>2.09%                    </td> <td>20          </td> <td>5301          </td> <td>nan                </td> <td>nan            </td> <td>nan                             </td>\n",
+       "        </tr>\n",
+       "        <tr>\n",
+       "            <td>22-Apr</td> <td>263              </td> <td>263292                                   </td> <td>10.04%              </td> <td>1.91%                    </td> <td>24          </td> <td>4931          </td> <td>nan                </td> <td>nan            </td> <td>nan                             </td>\n",
+       "        </tr>\n",
+       "        <tr>\n",
+       "            <td>23-Apr</td> <td>269              </td> <td>263460                                   </td> <td>2.28%               </td> <td>0.06%                    </td> <td>6           </td> <td>168           </td> <td>nan                </td> <td>nan            </td> <td>nan                             </td>\n",
+       "        </tr>\n",
+       "        <tr>\n",
+       "            <td>24-Apr</td> <td>287              </td> <td>271590                                   </td> <td>6.69%               </td> <td>3.09%                    </td> <td>18          </td> <td>8130          </td> <td>nan                </td> <td>nan            </td> <td>nan                             </td>\n",
+       "        </tr>\n",
+       "        <tr>\n",
+       "            <td>25-Apr</td> <td>296              </td> <td>282143                                   </td> <td>3.14%               </td> <td>3.89%                    </td> <td>9           </td> <td>10553         </td> <td>nan                </td> <td>nan            </td> <td>nan                             </td>\n",
+       "        </tr>\n",
+       "        <tr>\n",
+       "            <td>26-Apr</td> <td>310              </td> <td>288045                                   </td> <td>4.73%               </td> <td>2.09%                    </td> <td>14          </td> <td>5902          </td> <td>nan                </td> <td>nan            </td> <td>nan                             </td>\n",
+       "        </tr>\n",
+       "        <tr>\n",
+       "            <td>27-Apr</td> <td>330              </td> <td>291996                                   </td> <td>6.45%               </td> <td>1.37%                    </td> <td>20          </td> <td>3951          </td> <td>nan                </td> <td>nan            </td> <td>nan                             </td>\n",
+       "        </tr>\n",
+       "        <tr>\n",
+       "            <td>28-Apr</td> <td>343              </td> <td>295106                                   </td> <td>3.94%               </td> <td>1.07%                    </td> <td>13          </td> <td>3110          </td> <td>nan                </td> <td>nan            </td> <td>nan                             </td>\n",
+       "        </tr>\n",
+       "    </tbody>\n",
+       "</table>\n",
+       "<p>... (21 rows omitted)</p>"
+      ],
+      "text/plain": [
+       "Date   | Prison Pos. Cases | Total Cases (from total population of NY) | Prison Pos. % Change | Total Pos. Cases % Change | Prison daily | Total NY daily | Prison Rate of Inf. | NY Rate of Inf. | Difference of Rates of Infection\n",
+       "19-Apr | 211               | 247815                                    | nan                  | nan                       | nan          | nan            | nan                 | nan             | nan\n",
+       "20-Apr | 219               | 253060                                    | 3.79%                | 2.12%                     | 8            | 5245           | nan                 | nan             | nan\n",
+       "21-Apr | 239               | 258361                                    | 9.13%                | 2.09%                     | 20           | 5301           | nan                 | nan             | nan\n",
+       "22-Apr | 263               | 263292                                    | 10.04%               | 1.91%                     | 24           | 4931           | nan                 | nan             | nan\n",
+       "23-Apr | 269               | 263460                                    | 2.28%                | 0.06%                     | 6            | 168            | nan                 | nan             | nan\n",
+       "24-Apr | 287               | 271590                                    | 6.69%                | 3.09%                     | 18           | 8130           | nan                 | nan             | nan\n",
+       "25-Apr | 296               | 282143                                    | 3.14%                | 3.89%                     | 9            | 10553          | nan                 | nan             | nan\n",
+       "26-Apr | 310               | 288045                                    | 4.73%                | 2.09%                     | 14           | 5902           | nan                 | nan             | nan\n",
+       "27-Apr | 330               | 291996                                    | 6.45%                | 1.37%                     | 20           | 3951           | nan                 | nan             | nan\n",
+       "28-Apr | 343               | 295106                                    | 3.94%                | 1.07%                     | 13           | 3110           | nan                 | nan             | nan\n",
+       "... (21 rows omitted)"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "#describing the table\n",
+    "covid = Table.read_table('DOCCS DATA - Data Fest Table.csv')\n",
+    "covid"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#take the log of the number of cases"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.6"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
